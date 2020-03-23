@@ -1,0 +1,345 @@
+/* =======================================================
+  Name: MakerSpace Inventory
+  Author: Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
+ ======================================================= */
+
+ @import url("https://fonts.googleapis.com/css?family=Lilita+One|Poppins&display=swap");
+
+ ul {
+   list-style-type: none;
+ }
+ 
+ body {
+   overflow: hidden;
+   color: white;
+   background: #ffffff;
+ }
+ 
+ body::-webkit-scrollbar {
+   width: 0em;
+   display: none;
+ }
+ 
+ body::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px #00333F;
+ }
+ 
+ body::-webkit-scrollbar-thumb {
+   background-color: #002C53;
+   outline: 1px solid #00333F;
+   border-radius: 10px;
+ }
+ 
+ h4,
+ p,
+ h3 {
+   /* mix-blend-mode: difference; */
+   color: #333333;
+ }
+ 
+ h4,
+ h3 {
+   font-size: 60px;
+   text-decoration: bold;
+   font-family: "Lilita One", cursive;
+ }
+ 
+ h5 {
+   position: relative;
+   margin: auto;
+   text-decoration: bold;
+   font-family: "Lilita One", cursive;
+ }
+ 
+ p {
+   font-size: 14px;
+   width: 100%;
+   font-family: "Poppins", sans-serif;
+ }
+ 
+ text {
+   font-family: "Lilita One", cursive;
+ }
+ 
+ a {
+   text-decoration: none;
+   color: #333333;
+   transition: 0.5s;
+ }
+ 
+ /*--------------------------------------------------------------
+ # Splash Screen
+ --------------------------------------------------------------*/
+ 
+ #load {
+   background: #333333;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   margin: auto;
+   -webkit-animation: disappear 1.0s forwards;
+   animation: disappear 1.0s forwards;
+   vertical-align: middle;
+   text-align: center;
+   padding: 10%;
+   z-index:50;
+   opacity:1;
+   -webkit-opacity: 1;
+   display:block;
+   
+ }
+ 
+ /* Safari */
+ @-webkit-keyframes disappear {
+   0% {
+     -webkit-opacity: 1;
+     height: 100%;
+     bottom: 0;
+     z-index: 50;
+     display:block;
+   }
+   90% {
+     -webkit-opacity: 1;
+     height: 100%;
+     bottom: 0;
+     z-index: 50;
+     display:block;
+   }
+   99.999% {
+     -webkit-opacity: 1;
+     height: 100%;
+     bottom: -100%;
+     z-index: 50;
+     display:none;
+   }
+   100% {
+     -webkit-opacity: 0;
+     height: 100%;
+     bottom: -100%;
+     z-index: -10;
+     display: none;
+   }
+ }
+ 
+ @keyframes disappear {
+   0% {
+     opacity: 1;
+     height: 100%;
+     bottom: 0;
+     z-index: 50;
+     display:block;
+   }
+   90% {
+     opacity: 1;
+     height: 100%;
+     bottom: 0;
+     z-index: 50;
+     display:block;
+   }
+   99.999% {
+     opacity: 1;
+     height: 100%;
+     bottom: -100%;
+     z-index: 50;
+     display:block;
+   }
+   100% {
+     opacity: 0;
+     height: 100%;
+     bottom: -100%;
+     z-index: -10;
+     display: none;
+   }
+ }
+
+  .intro-img {
+   width: 100%;
+   float: none;
+   margin: 0 auto 25px auto;
+   font-family: "Poppins", sans-serif;
+ }
+
+/*==============================================================
+# Map
+================================================================*/
+
+
+  /*--------------------------------------------------------------
+ # Map Font
+ --------------------------------------------------------------*/
+
+  
+ /*--------------------------------------------------------------
+ # Graphs
+ --------------------------------------------------------------*/
+ 
+ 
+ .graph{
+    position:absolute;
+    left:10%;
+    top:3%;
+    padding:10px;
+    margin-left:5%;
+}
+
+ /*--------------------------------------------------------------
+ # Labels
+ --------------------------------------------------------------*/
+
+#labels{
+    position: fixed;
+    top:5%;
+    right:5%;
+    height:90%;
+    padding:3%;
+    border:3px solid #000000;
+    text-align:left;
+}
+
+ /*--------------------------------------------------------------
+ # Admin Side Bar
+ --------------------------------------------------------------*/
+ 
+
+ #sidebar {
+  z-index:10;
+  padding: 0;
+  width: 100px;
+  background-color: #ffffff;
+  border:2px solid black;
+  position: fixed;
+  top:5%;
+  left:5%;
+  height: 90%;
+  overflow: auto;
+  text-align:center;
+}
+
+#sidebar li{
+  cursor:pointer;
+  display: block;
+  color:#333333;
+  text-decoration: none;
+  padding:15px;
+  transition:0.3s;
+}
+
+#sidebar li p{
+  margin-top:10px;
+  font-size:10px;
+}
+ 
+#sidebar li.active {
+  background-color: #D3D3D3;
+  color: white;
+  border-left:5px black solid;
+}
+
+#sidebar li:hover:not(.active) {
+  background-color: #D3D3D3;
+  color: white;
+  border-left:5px black solid;
+
+}
+
+/*-----------------------------------
+*--------*/
+
+
+ input {
+   background-position: 10px 12px; /* Position the search icon */
+   background-repeat: no-repeat; /* Do not repeat the icon image */
+   font-size: 16px; /* Increase font-size */
+   padding: 12px 20px 12px 40px; /* Add some padding */
+   border: 1px solid #333333; /* Add a grey border */
+   margin-top: 12px; /* Add some space below the input */
+   border-radius: 50px;
+ }
+
+ .select {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  font-size: 16px; /* Increase font-size */
+  border: 1px solid black; /* Add a grey border */
+  margin-top: 12px; /* Add some space below the input */
+  border-radius: 50px;
+  background:white;
+}
+
+ button {
+   margin-top: 12px; /* Add some space below the input */
+   background: #D3D3D3;
+   color: black;
+   width: 100%;
+   font-size:10px;
+   padding:10px;
+   top: 10%;
+   border:4px solid black;
+   vertical-align: middle;
+   position: relative;
+   border-radius: 40px;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+ 
+ button:hover {
+     background:white;
+     border:4px solid black;
+ }
+ 
+ #searchButton {
+   box-shadow: none;
+   margin-top: 0px;
+   padding: 13px;
+   border: none;
+   width: 100px;
+   margin-left: -100px;
+   background: #002C53;
+   vertical-align: middle;
+   border-radius: 0px 40px 40px 0px;
+ }
+ 
+ #searchButton:hover {
+   background: #00AEE0;
+   box-shadow: none;
+ }
+ 
+ input[type="submit"] {
+   margin-top: 12px; /* Add some space below the input */
+   background: #002C53;
+   color: white;
+   width: 50%;
+   top: 10%;
+   vertical-align: middle;
+   padding: 12px 20px 12px 40px; /* Add some padding */
+   position: relative;
+   opacity: 1;
+   border-radius: 40px;
+   border: 4px dashed #F7FCFF;
+   box-shadow: 5px 8px 1px rgba(0, 0, 0, 0.5);
+   cursor: pointer;
+   transition: 0.7s;
+ }
+ 
+ 
+ 
+ input[type="submit"] :hover {
+   border: 4px dashed #F7FCFF;
+   box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.5);
+ }
+ 
+ textarea {
+   background-image: url("/css/searchicon.png"); /* Add a search icon to input */
+   background-position: 10px 12px; /* Position the search icon */
+   background-repeat: no-repeat; /* Do not repeat the icon image */
+   width: 50%; /* Full-width */
+   font-size: 16px; /* Increase font-size */
+   padding: 12px 20px 12px 40px; /* Add some padding */
+   border: 1px solid #ddd; /* Add a grey border */
+   margin-top: 12px; /* Add some space below the input */
+   border-radius: 50px;
+ }
+ 
+

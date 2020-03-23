@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- =======================================================
+    Name: Makerspace Inventory
+    Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
+ ======================================================= -->
+
+    <meta charset="utf-8" />
+    <title>Labby</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicons -->
+    <link href="img/logo.png" rel="icon" />
+    <link href="img/logo.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+       <link
+       href="https://fonts.googleapis.com/icon?family=Material+Icons"
+       rel="stylesheet"
+     />
+ 
+     <link
+       rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+     />
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet" />
+
+     <!---Plotly Sript to Be Placed in head-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  </head>
+
+  <body>
+    
+
+<!-- ================================================================================================================ 
+# Splash Screen and mobile block
+================================================================================================================-->
+    
+    <div id="load"></div>
+
+<!-- ================================================================================================================ 
+# Header
+================================================================================================================--> 
+
+
+<!-- ================================================================================================================ 
+# Side Bar Navigation
+================================================================================================================--> 
+  
+       <!----- Side Bar Navigation -->
+       <ul id="sidebar">
+        <a href="index.html"><li ><i class="fa fa-user-circle-o" style="font-size:24px"></i><p>Home</p></li></a>
+        <a href="manual.html"><li data-menuanchor="dashboard"><i class="fa fa-dashboard" style="font-size:24px"></i></i><p>Manual</p></li></a>
+        <a href="d2.html"><li><p>d2</p></li></a>
+        <a href="d3.html"><li><p>d3</p></li></a>
+        <a href="d4.html"><li class="active"><p>d4</p></li></a>
+        <a href="d5.html"><li><p>d5</p></li></a>
+        <a href="d6.html"><li><p>d6</p></li></a>
+        <a href="d7.html"><li><p>d7</p></li></a>
+        <a href="d8.html"><li><p>d8</p></li></a>
+
+
+         
+      </ul>
+
+  
+<!-- ================================================================================================================ 
+# Graph
+================================================================================================================--> 
+  
+    <div class="graph">
+        <div id="myDiv" style="width:100%; height:700px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+      </div>
+
+<!-- ================================================================================================================ 
+# Labels
+================================================================================================================--> 
+
+<div id="labels">
+    
+
+    <select type="select"  id="tv1_input" class="select custom-selected form-control" >
+        <option value="0">-- 1st Transition --</option>
+        <option value="1t2g-1a1g">1T2g - 1A1g</option>
+        <option value="1t1g-1a1g">1T1g - 1A1g</option>
+    </select>
+
+    <select type="select"  id="tv2_input" class="select custom-selected form-control" >
+        <option value="0">-- 2nd Transition --</option>
+        <option value="1t2g-1a1g">1T2g - 1A1g</option>
+        <option value="1t1g-1a1g">1T1g - 1A1g</option>
+        </select>
+
+   
+    <input type="text" placeholder ="1st Wavelength e.g 467" id="v1_input" >
+    <br>
+    <input type="text" placeholder ="2nd Wavelength e.g 333" id="v2_input" >
+    <br>
+    <button onclick="calculate()" id="submit" >Calculate</button>
+    <br>
+    <br>
+    <br>
+
+
+    <p>v1: <u id="v1" ></u></p>
+    <p>v2: <u id="v2" ></u></p>
+
+    <p>10Dq:  <u id="10Dq" ></u></p>
+    <p>10Dq/B: <u id="10Dq/B" ></u></p>
+    <p>Ev1/B: <u id="Ev1/B" ></u></p>
+    <p>Ev2/B: <u id="Ev2/B" ></u></p>
+    <p>Ev2/Ev1 ratio: <u id="Ev2/Ev1" ></u></p>
+    <p>B Racah Param: <u id="B" ></u></p>
+
+
+</div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+  <script src="js/piling.js"></script>
+
+
+<script src="js/d4.js"></script>
+
+
+
+   
+
+</body>
+</html>
+
+
+
