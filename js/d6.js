@@ -317,21 +317,16 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
         E10Dq.push(delta_B[i]*B[i])
     }
 
-    $("#10Dq").text( round(E10Dq[0],3));
-    // $("#Ev1/B").text( round(Ev1/B[0],3));
-    // $("#Ev2/B").text( round(Ev2/B[0],3));
-    // $("#v1").text(v1);
-    // $("#v2").text(v2);
-    // $("#B").text( round(B[0],3));
+    // $("#10Dq").text( round(E10Dq[0],3));
+    // document.getElementById('10Dq/B').innerHTML = round(delta_B[0],3);
+    document.getElementById('v1').innerHTML = round(v1,3) + ' cm^-1';
+    document.getElementById('v2').innerHTML = round(v2,3) + ' cm^-1';
+    // document.getElementById('Ev1/B').innerHTML = round(Ev1/B[0],3);
+    // document.getElementById('Ev2/B').innerHTML = round(Ev2/B[0],3);
+    // document.getElementById('Ev2/Ev1').innerHTML = round(ratio,3);
+    // document.getElementById('B').innerHTML = round(B[0],3);
 
 
-    document.getElementById('10Dq/B').innerHTML = round(delta_B[0],3);
-    document.getElementById('v1').innerHTML = round(v1,3);
-    document.getElementById('v2').innerHTML = round(v2,3);
-    document.getElementById('Ev1/B').innerHTML = round(Ev1/B[0],3);
-    document.getElementById('Ev2/B').innerHTML = round(Ev2/B[0],3);
-    document.getElementById('Ev2/Ev1').innerHTML = round(ratio,3);
-    document.getElementById('B').innerHTML = round(B[0],3);
 
     
     if ((E10Dq.length) == 0){
@@ -346,9 +341,10 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
 
 
     }
-    
+
+    $('.feedback').remove();
+ 
     for (i = 0; i < (E10Dq.length); i++){  
-        if ((E10Dq.length) != 1){
         console.log("Match " + (i+1)) 
         console.log("10Dq/B is " + delta_B[i])
         console.log("Ev1/B is " + Ev1_B[i]  + " and Ev2/B is " + Ev2_B[i])
@@ -357,21 +353,27 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
         
         x_value = delta_B[i]
 
-
-        }
-    
+        $('#labels').append(
+            '<div class="feedback" style="color:black;"> ' +
+            '<p>Match '+ (i + 1)+' is:</p>' +
+            '<p>10Dq: <u>'+ round(E10Dq[i],3) +'</u> </p>' +
+            '<p>10Dq/B <u>'+ round(delta_B[i],3) +'</u> </p>' +
+            '<p>Ev1/B <u>'+ round(Ev1/B[i],3) +'</u> </p>' +
+            '<p>Ev2/B <u>'+ round(Ev2/B[i],3) +'</u> </p>' +
+            '<p>Ev2/Ev1 ratio: <u>'+ round(ratio,3) +'</u> </p>' +
+            '<p>B Racah Param: <u>'+ round(B[i],3) +'</u> </p>' +
+            '</div>'
+            
+        )
+        start = 1;
     }
-
-    
-
 
     //Functions that Call the calculations for The Diagrams
  
 function makeplot() {
-    Plotly.d3.csv("https://raw.githubusercontent.com/msimbao/TanabeTsuganoGraphicCalculator/master/TanabeTsugano/graphData/TSd6cammag.csv", function(data){ processData(data) } );
+    Plotly.d3.csv("https://raw.githubusercontent.com/msimbao/tanabeTsugano/master/diagrams/csv/d6.csv", function(data){ processData(data) } );
 };
-    
-x_value = delta_B[0]
+
 
 function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
@@ -384,11 +386,10 @@ function processData(allRows) {
     allRows.keys();
     for (var i=0; i<allRows.length; i++) {
         row = allRows[i];
-        x.push( row['delta/B'] );
+        x.push( row['deltaB'] );
     }
 
 
-console.log(Object.keys(allRows[0]).length - 1)
     for (var j=0; j<(Object.keys(allRows[0]).length - 1); j++){
 
         y = []
@@ -396,12 +397,11 @@ console.log(Object.keys(allRows[0]).length - 1)
 
         for (var i=0; i<allRows.length; i++) {
             row = allRows[i];
-            delete row['delta/B']
+            delete row['deltaB']
             var items = Object.keys(row)
             y.push( row[items[j]] );
             name = items[j];
         }
-        console.log(name)
 
         traces = [{
             x: x, 
@@ -410,27 +410,65 @@ console.log(Object.keys(allRows[0]).length - 1)
         }];
         
 
+    if (name ==  "5Eg" || name =="5T2g" )
         var result = {
             x: x,
             y: y,
             type: 'scatter',
             mode: 'lines',
+            width: 3,
             name: name,
     }
+        else
+     var result = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines',
+        name: name,
+        line: {
+            dash: 'dot',
+          }
+}
+
+
         
         data.push(result)
     }
 
-    var line = {
-        x: [x_value,x_value],
-        y: [0,250],
+
+    if (start == 1){
+
+        for (i = 0; i < (delta_B.length); i++){  
+var line = {
+    x: [delta_B[i],delta_B[i]],
+    y: [0,150],
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Transition Line',
+}
+data.push(line)
+}
+
+}
+
+    var boundary = {
+        x: [    18.3333333
+            ,    18.3333333
+        ],
+        y: [0,150],
         type: 'scatter',
         mode: 'lines',
         name: 'Transition Line',
+        line: {
+            dash: 'dot',
+            width: 4,
+            color: '#000000',
+          }
     }
 
-    data.push(line)
-    console.log(data)
+
+    data.push(boundary)
 
 makePlotly(data, standard_deviation)
 }
@@ -439,7 +477,7 @@ function makePlotly( data, y, standard_deviation ){
     var plotDiv = document.getElementById("plot");
 
     var layout = {
-        title: "Tanabe Tsugano D6",
+        title: "Tanabe Tsugano d6",
         showlegend: false,
         autosize: true,
         font: {
@@ -513,7 +551,7 @@ function makePlotly( data, y, standard_deviation ){
         responsive: true,
         showlegend: false
       },
-      {title: 'Tanabe Tsugano D6'},
+      {title: 'Tanabe Tsugano d6'},
      );
   };
     makeplot();

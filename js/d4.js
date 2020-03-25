@@ -21,7 +21,7 @@ password_input.addEventListener("keyup", function(event) {
 
 function calculate(){
 
-d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/diagrams/d6.json"
+d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/diagrams/d4.json"
 ).then(function(table) {
 
 
@@ -34,7 +34,7 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
     var v2 = document.getElementById('v2_input').value 
     var tv1 = document.getElementById('tv1_input').value 
     var tv2 = document.getElementById('tv2_input').value 
-    var d_electrons='d6'
+    var d_electrons='d4'
     var use_nm = false
 
 
@@ -49,7 +49,7 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
     // var v2=333
     // var tv1="1t1g-1a1g"
     // var tv2="1t2g-1a1g"
-    // var d_electrons='d6'
+    // var d_electrons='d4'
 
     //========================================================================
     //=======================================================================
@@ -368,7 +368,7 @@ d3.json("https://raw.githubusercontent.com/ricardo-ayres/pynabe-sugano/master/di
     //Functions that Call the calculations for The Diagrams
  
 function makeplot() {
-    Plotly.d3.csv("https://raw.githubusercontent.com/msimbao/TanabeTsuganoGraphicCalculator/master/TanabeTsugano/graphData/TSd6cammag.csv", function(data){ processData(data) } );
+    Plotly.d3.csv("https://raw.githubusercontent.com/msimbao/tanabeTsugano/master/diagrams/csv/d4.csv", function(data){ processData(data) } );
 };
     
 x_value = delta_B[0]
@@ -384,7 +384,7 @@ function processData(allRows) {
     allRows.keys();
     for (var i=0; i<allRows.length; i++) {
         row = allRows[i];
-        x.push( row['delta/B'] );
+        x.push( row['deltaB'] );
     }
 
 
@@ -396,7 +396,7 @@ console.log(Object.keys(allRows[0]).length - 1)
 
         for (var i=0; i<allRows.length; i++) {
             row = allRows[i];
-            delete row['delta/B']
+            delete row['deltaB']
             var items = Object.keys(row)
             y.push( row[items[j]] );
             name = items[j];
@@ -410,26 +410,61 @@ console.log(Object.keys(allRows[0]).length - 1)
         }];
         
 
+ 
+        if (name ==  "5T2g" || name ==  "5Eg" )
         var result = {
             x: x,
             y: y,
             type: 'scatter',
             mode: 'lines',
+            width: 3,
             name: name,
     }
+        else
+     var result = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines',
+        name: name,
+        line: {
+            dash: 'dot',
+          }
+}
         
         data.push(result)
     }
 
     var line = {
         x: [x_value,x_value],
-        y: [0,250],
+        y: [0,100],
         type: 'scatter',
         mode: 'lines',
         name: 'Transition Line',
     }
 
+    18.3333333
+
     data.push(line)
+
+
+    var boundary = {
+        x: [    27.1356792	
+            ,    27.1356792	
+        ],
+        y: [0,130],
+        type: 'scatter',
+        mode: 'lines',
+        name: 'Transition Line',
+        line: {
+            dash: 'dot',
+            width: 4,
+            color: '#000000',
+          }
+    }
+
+
+    data.push(boundary)
     console.log(data)
 
 makePlotly(data, standard_deviation)
@@ -439,7 +474,7 @@ function makePlotly( data, y, standard_deviation ){
     var plotDiv = document.getElementById("plot");
 
     var layout = {
-        title: "Tanabe Tsugano D6",
+        title: "Tanabe Tsugano d4",
         showlegend: false,
         autosize: true,
         font: {
@@ -513,7 +548,7 @@ function makePlotly( data, y, standard_deviation ){
         responsive: true,
         showlegend: false
       },
-      {title: 'Tanabe Tsugano D6'},
+      {title: 'Tanabe Tsugano d4'},
      );
   };
     makeplot();
