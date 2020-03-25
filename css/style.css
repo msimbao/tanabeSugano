@@ -78,8 +78,8 @@
    height: 100%;
    text-align: center;
    margin: auto;
-   -webkit-animation: disappear 1.0s forwards;
-   animation: disappear 1.0s forwards;
+   -webkit-animation: disappear 0.0s forwards;
+   animation: disappear 0.0s forwards;
    vertical-align: middle;
    text-align: center;
    padding: 10%;
