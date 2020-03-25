@@ -486,7 +486,7 @@ function makePlotly( data, y, standard_deviation ){
           showline: true,
           autotick: true,
           ticks: "",
-          showticklabels: false,
+          showticklabels: true,
           backgroundcolor: "#ffffff",
           showbackground: true,
           linecolor:'#333333',
@@ -507,7 +507,7 @@ function makePlotly( data, y, standard_deviation ){
           autotick: true,
           range: [0,70],
           ticks: "",
-          showticklabels: false,
+          showticklabels: true,
           backgroundcolor: "#ffffff",
           showbackground: true,
           linecolor:'#333333',
@@ -529,7 +529,7 @@ function makePlotly( data, y, standard_deviation ){
         responsive: true,
         showlegend: false
       },
-      {title: 'Tanabe Tsugano d3'},
+      {title: 'Tanabe Sugano Diagrams d3'},
      );
   };
     makeplot();
